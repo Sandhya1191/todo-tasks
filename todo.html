@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #todo-list {
+            width: 300px;
+            margin: 0 auto;
+        }
+        .item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .checkbox {
+            margin-right: 10px;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background-color: lightgray;
+        }
+        .progress {
+            width: 0;
+            height: 100%;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="todo-list">
+        <h1>To-Do List</h1>
+        <div class="item">
+            <input type="checkbox" class="checkbox" id="item1">
+            Task 1
+        </div>
+        <div class="item">
+            <input type="checkbox" class="checkbox" id="item2">
+            Task 2
+        </div>
+        <div class="item">
+            <input type="checkbox" class="checkbox" id="item3">
+            Task 3
+        </div>
+        <div class="item">
+            <input type="checkbox" class="checkbox" id="item4">
+            Task 4
+        </div>
+        <div class="item">
+            <input type="checkbox" class="checkbox" id="item5">
+            Task 5
+        </div>
+        <div class="item">
+            <input type="checkbox" class="checkbox" id="item6">
+            Task 6
+        </div>
+        <div class="item">
+            <input type="checkbox" class="checkbox" id="item7">
+            Task 7
+        </div>
+        <div class="item">
+            <input type="checkbox" class="checkbox" id="item8">
+            Task 8
+        </div>
+        <div class="item">
+            <input type="checkbox" class="checkbox" id="item9">
+            Task 9
+        </div>
+        <div class="item">
+            <input type="checkbox" class="checkbox" id="item10">
+            Task 10
+        </div>
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+    </div>
+
+    <script>
+        const checkboxes = document.querySelectorAll('.checkbox');
+        const progress = document.getElementById('progress');
+        const totalItems = checkboxes.length;
+
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', updateProgressBar);
+        });
+
+        function updateProgressBar() {
+            let completedItems = 0;
+            checkboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    completedItems++;
+                }
+            });
+
+            const percentCompleted = (completedItems / totalItems) * 100;
+            progress.style.width = percentCompleted + '%';
+        }
+    </script>
+</body>
+</html>
